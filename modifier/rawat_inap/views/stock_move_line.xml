@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_move_input_output_line_view_tree" model="ir.ui.view">
+            <field name="name">stock.move.input.output.line.view.tree</field>
+            <field name="model">stock.move.input.output.line</field>
+            <field name="arch" type="xml">
+                <tree string="Stock Move">
+                    <field name="stock_input_move_id"/>
+                    <field name="stock_out_move_id"/>
+                    <field name="quantity"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_move_input_output_line_action" model="ir.actions.act_window">
+            <field name="name">Stock Move</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.move.input.output.line</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add New Stock Move
+              </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

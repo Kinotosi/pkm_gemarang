@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_output_view_form" model="ir.ui.view">
+            <field name="name">stock_output_view_form</field>
+            <field name="model">stock.output</field>
+            <field name="arch" type="xml">
+                <form string="Receiving Notes">
+                    <header>
+                        <button name="action_confirm_draft" type="object" string="Mark as Todo" class="oe_highlight" attrs="{'invisible': [('state','!=','draft')]}"/>
+                        <button name="action_confirm" type="object" string="Confirm" class="oe_highlight" attrs="{'invisible': [('state','!=','confirmed')]}"/>
+                        <button name="action_check_done" type="object" string="Done" class="oe_highlight" attrs="{'invisible': [('state','!=','assigned')]}"/>
+
+                        <button name="action_set_draft" type="object" string="Set to Draft" attrs="{'invisible': [('state','=','done')]}"/>
+                        <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': [('state','in',['done','cancel'])]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assigned,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title" attrs="{'invisible': [('name','=',False)]}">
+                            <h1>
+                                <field name="name" readonly="1" force_save="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="vendor_id" required="1" attrs="{'readonly': [('state','!=','draft')]}" />
+                                <field name="source_location_id" required="1" attrs="{'readonly': [('state','!=','draft')]}" domain="[('is_virtual','=',False)]" />
+                                <field name="dest_location_id" required="1" readonly="1" force_save="1" />
+                                <field name="company_id" readonly="1" force_save="1" />
+                            </group>
+                            <group>
+                                <field name="create_date" readonly="1" force_save="1" />
+                                <field name="create_uid" readonly="1" force_save="1" />
+                                <field name="scheduled_date" attrs="{'readonly': [('state','!=','draft')]}" />
+                                <field name="date_done" readonly="1" force_save="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page id="operations" string="Operations">
+                                <field name="stock_output_move_ids" mode="tree" attrs="{'readonly': [('state','in',['confirmed','done'])]}" context="{'stock_output_move_ids': stock_output_move_ids, 'default_source_location_id': source_location_id}">
+                                    <tree string="Stock Move" editable="bottom">
+                                        <field name="state" invisible="1"/>
+                                        <field name="source_location_id" invisible="1" />
+                                        <field name="line_sequence" readonly="1" force_save="1"/>
+                                        <field name="product_id" required="1" attrs="{'readonly': [('state','!=','draft')]}" />
+                                        <field name="name" attrs="{'readonly': [('state','!=','draft')]}" />
+                                        <field name="onhand_qty" string="On Hand Qty" attrs="{'column_invisible': [('parent.state','=','done')]}"/>
+                                        <field name="remaining_qty"/>
+                                        <field name="demand_qty" required="1" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                        <field name="quantity_done" attrs="{'readonly': [('state','!=','assigned')]}"/>
+                                        <field name="uom_id" required="1" attrs="{'readonly': [('state','!=','draft')]}" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page id="note" string="Note">
+                                <field name="cancel_reason" string="Cancel Reason" placeholder="Cancel Reason"/>
+                                <field name="note" string="Note" placeholder="Add an internal note that will be printed on the Picking Operations sheet"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="stock_output_view_tree" model="ir.ui.view">
+            <field name="name">stock_output_view_tree</field>
+            <field name="model">stock.output</field>
+            <field name="arch" type="xml">
+                <tree string="Receiving Notes">
+                    <field name="name" string="Reference"/>
+                    <field name="source_location_id" string="From"/>
+                    <field name="dest_location_id" string="To"/>
+                    <field name="company_id"/>
+                    <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state not in ('done')"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_output_action" model="ir.actions.act_window">
+            <field name="name">Delivery Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.output</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add New Delivery Orders
+              </p>
+            </field>
+        </record>
+    </data>
+</odoo>

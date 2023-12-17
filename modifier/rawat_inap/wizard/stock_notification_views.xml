@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_notip_message_view_form" model="ir.ui.view">
+            <field name="name">stock.notip.message.view.form</field>
+            <field name="model">stock.notip.message</field>
+            <field name="arch" type="xml">
+                <form string="Stock Notification Message">
+                    <sheet>
+                        <field name="stock_input_id" invisible="1"/>
+                        <field name="stock_input_move_ids" widget="many2many_tags" invisible="1"/>
+                        <field name="stock_output_id" invisible="1"/>
+                        <field name="stock_output_move_ids" widget="many2many_tags" invisible="1"/>
+                        <div>
+                            <span>You have not recorded <b>done</b> quantities yet, by clicking on <b>apply</b> will process all the quantities.</span>
+                        </div>
+                    </sheet>
+                    <footer>
+                        <button name="action_confirm" type="object" string="Apply" class="oe_highlight"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

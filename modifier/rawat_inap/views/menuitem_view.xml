@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="rawat_inap_menu_id" name="Rawat Inap" sequence="10"/>
+            <!-- This Menu Item Must have a parent -->
+            <menuitem id="rawat_inap_operation_menu_id" name="Operations" parent="rawat_inap_menu_id" sequence="10"/>
+                <!-- This Menu Item Must have a parent -->
+                <menuitem id="rawat_inap_transfer_menu_id" name="Transfer Operations" parent="rawat_inap_operation_menu_id" sequence="10"/>
+                    <!-- This Menu Item must have a parent and an action -->
+                    <menuitem id="rawat_inap_receiving_notes_menu_id" name="Receiving Notes" parent="rawat_inap_transfer_menu_id" action="rawat_inap.stock_input_action" sequence="10"/>
+                    <menuitem id="rawat_inap_delivery_orders_menu_id" name="Delivery Orders" parent="rawat_inap_transfer_menu_id" action="rawat_inap.stock_output_action" sequence="20"/>
+                <!-- This Menu Item Must have a parent -->
+                <menuitem id="rawat_inap_report_menu_id" name="Reports" parent="rawat_inap_operation_menu_id" sequence="20"/>
+                    <!-- This Menu Item must have a parent and an action -->
+                    <menuitem id="rawat_inap_stock_move_menu_id" name="Stock Move" parent="rawat_inap_report_menu_id" action="rawat_inap.stock_move_input_output_line_action" sequence="10"/>
+            <!-- This Menu Item Must have a parent -->
+            <menuitem id="rawat_inap_products_menu_id" name="Products" parent="rawat_inap_menu_id" sequence="20"/>
+                <!-- This Menu Item must have a parent and an action -->
+                <menuitem id="rawat_inap_product_template_menu_id" name="Products" parent="rawat_inap_products_menu_id" action="rawat_inap.product_template_action_product_rawat_inap" sequence="10"/>
+                <!-- This Menu Item must have a parent and an action -->
+                <menuitem id="rawat_inap_product_product_menu_id" name="Product Variants" parent="rawat_inap_products_menu_id" action="rawat_inap.stock_product_normal_rawat_inap_action" sequence="20"/>
+            <!-- This Menu Item Must have a parent -->
+            <menuitem id="rawat_inap_employee_menu_id" name="Employees" parent="rawat_inap_menu_id" sequence="30"/>
+                <!-- This Menu Item must have a parent and an action -->
+                <menuitem id="rawat_inap_res_partner_menu_id" name="Employees" parent="rawat_inap_employee_menu_id" action="rawat_inap.res_partner_action_rawat_inap" sequence="10"/>
+            <!-- This Menu Item Must have a parent -->
+            <menuitem id="rawat_inap_configuration_menu_id" name="Configurations" parent="rawat_inap_menu_id" sequence="40"/>
+                <!-- This Menu Item must have a parent and an action -->
+                <!-- This Menu Item Must have a parent -->
+                <menuitem id="rawat_inap_uom_menu_categ_id" name="Units of Measure" parent="rawat_inap_configuration_menu_id" sequence="10"/>
+                    <menuitem id="rawat_inap_product_uom_menu_id" name="UoM" parent="rawat_inap_uom_menu_categ_id" action="uom.product_uom_form_action" sequence="10"/>
+                    <menuitem id="rawat_inap_product_uom_category_menu_id" name="UoM Category" parent="rawat_inap_uom_menu_categ_id" action="uom.product_uom_categ_form_action" sequence="20"/>
+                <menuitem id="rawat_inap_warehouses_menu_id" name="Warehouses" parent="rawat_inap_configuration_menu_id" action="stock.action_warehouse_form" sequence="20"/>
+    </data>
+</odoo>

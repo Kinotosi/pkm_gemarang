@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_input,access_stock_input,model_stock_input,,1,1,1,1
+access_stock_input_move,access_stock_input_move,model_stock_input_move,,1,1,1,1
+access_stock_notip_message,stock.notip.message,model_stock_notip_message,,1,1,1,1
+access_stock_output,stock.output,model_stock_output,,1,1,1,1
+access_stock_output_move,stock.output.move,model_stock_output_move,,1,1,1,1
+access_stock_cancel,stock.cancel,model_stock_cancel,,1,1,1,1
+access_stock_move_input_output_line,stock.move.input.output.line,model_stock_move_input_output_line,,1,1,1,1

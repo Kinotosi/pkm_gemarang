@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="ir_stock_input_data" model="stock.warehouse">
+            <field name="name">Partner Locations/Vendors</field>
+            <field name="code">PLV</field>
+            <field name="is_virtual" eval="True"/>
+        </record>
+
+        <record id="ir_stock_output_data" model="stock.warehouse">
+            <field name="name">Partner Locations/Customers</field>
+            <field name="code">PLC</field>
+            <field name="is_virtual" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
