@@ -4,3 +4,4 @@ from . import stock_output
 from . import stock_warehouse
 from . import stock_move_line
 from . import insurances
+from . import rooms

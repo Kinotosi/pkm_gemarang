@@ -8,3 +8,5 @@ access_stock_cancel,stock.cancel,model_stock_cancel,,1,1,1,1
 access_stock_move_input_output_line,stock.move.input.output.line,model_stock_move_input_output_line,,1,1,1,1
 access_isurance_category_rawat_inap,isurance.category.rawat.inap,model_isurance_category_rawat_inap,,1,1,1,1
 access_isurance_rawat_inap,isurance.rawat.inap,model_isurance_rawat_inap,,1,1,1,1
+access_rooms_type_rawat_inap,rooms.type.rawat.inap,model_rooms_type_rawat_inap,,1,1,1,1
+access_rooms_rawat_inap,rooms.rawat.inap,model_rooms_rawat_inap,,1,1,1,1

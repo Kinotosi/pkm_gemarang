@@ -38,5 +38,11 @@
                     <menuitem id="isurance_rawat_inap_menu_id" name="Isurances" parent="isurances_rawat_inap_menu_id" action="rawat_inap.isurance_rawat_inap_action" sequence="10"/>
                     <!-- This Menu Item must have a parent and an action -->
                     <menuitem id="isurance_category_rawat_inap_menu_id" name="Isurances Category" parent="isurances_rawat_inap_menu_id" action="rawat_inap.isurance_category_rawat_inap_action" sequence="20"/>
+                <!-- This Menu Item Must have a parent -->
+                <menuitem id="rooms_rawat_inap_menu_id" name="Rooms" parent="rawat_inap_configuration_menu_id" sequence="40"/>
+                    <!-- This Menu Item must have a parent and an action -->
+                    <menuitem id="room_rawat_inap_menu_id" name="Rooms" parent="rooms_rawat_inap_menu_id" action="rawat_inap.rooms_rawat_inap_action" sequence="10"/>
+                    <!-- This Menu Item must have a parent and an action -->
+                    <menuitem id="room_type_rawat_inap_menu_id" name="Rooms Type" parent="rooms_rawat_inap_menu_id" action="rawat_inap.rooms_type_rawat_inap_action" sequence="20"/>
     </data>
 </odoo>

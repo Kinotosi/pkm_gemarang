@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="rooms_rawat_inap_view_form" model="ir.ui.view">
+            <field name="name">rooms.rawat.inapp.view.form</field>
+            <field name="model">rooms.rawat.inap</field>
+            <field name="arch" type="xml">
+                <form string="Isurance">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="room_tye" required="1"/>
+                            </group>
+                            <group>
+                                <field name="is_active"/>
+                                <field name="isurance_categ_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="rooms_rawat_inap_view_tree" model="ir.ui.view">
+            <field name="name">rooms.rawat.inap.view.tree</field>
+            <field name="model">rooms.rawat.inap</field>
+            <field name="arch" type="xml">
+                <tree string="Isurance">
+                    <field name="name"/>
+                    <field name="room_tye"/>
+                    <field name="isurance_categ_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rooms_rawat_inap_action" model="ir.actions.act_window">
+            <field name="name">Rooms</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rooms.rawat.inap</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add New Rooms
+              </p>
+            </field>
+        </record>
+
+        <record id="rooms_type_rawat_inap_view_tree" model="ir.ui.view">
+            <field name="name">rooms.type.rawat.inap.view.tree</field>
+            <field name="model">rooms.type.rawat.inap</field>
+            <field name="arch" type="xml">
+                <tree string="Isurance Category" editable="top">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rooms_type_rawat_inap_action" model="ir.actions.act_window">
+            <field name="name">Rooms Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rooms.type.rawat.inap</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add New Isurance Type
+              </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

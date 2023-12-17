@@ -25,6 +25,7 @@
         'views/stock_output_views.xml',
         'views/stock_move_line.xml',
         'views/isurances_views.xml',
+        'views/rooms_views.xml',
         'views/menuitem_view.xml',
 
         'wizard/stock_notification_views.xml',
