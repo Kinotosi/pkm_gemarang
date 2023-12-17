@@ -32,5 +32,11 @@
                     <menuitem id="rawat_inap_product_uom_menu_id" name="UoM" parent="rawat_inap_uom_menu_categ_id" action="uom.product_uom_form_action" sequence="10"/>
                     <menuitem id="rawat_inap_product_uom_category_menu_id" name="UoM Category" parent="rawat_inap_uom_menu_categ_id" action="uom.product_uom_categ_form_action" sequence="20"/>
                 <menuitem id="rawat_inap_warehouses_menu_id" name="Warehouses" parent="rawat_inap_configuration_menu_id" action="stock.action_warehouse_form" sequence="20"/>
+                <!-- This Menu Item Must have a parent -->
+                <menuitem id="isurances_rawat_inap_menu_id" name="Isurances" parent="rawat_inap_configuration_menu_id" sequence="30"/>
+                    <!-- This Menu Item must have a parent and an action -->
+                    <menuitem id="isurance_rawat_inap_menu_id" name="Isurances" parent="isurances_rawat_inap_menu_id" action="rawat_inap.isurance_rawat_inap_action" sequence="10"/>
+                    <!-- This Menu Item must have a parent and an action -->
+                    <menuitem id="isurance_category_rawat_inap_menu_id" name="Isurances Category" parent="isurances_rawat_inap_menu_id" action="rawat_inap.isurance_category_rawat_inap_action" sequence="20"/>
     </data>
 </odoo>

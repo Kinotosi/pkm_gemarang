@@ -6,7 +6,7 @@
             <field name="name">stock.move.input.output.line.view.tree</field>
             <field name="model">stock.move.input.output.line</field>
             <field name="arch" type="xml">
-                <tree string="Stock Move">
+                <tree string="Stock Move" create="false">
                     <field name="stock_input_move_id"/>
                     <field name="stock_out_move_id"/>
                     <field name="quantity"/>
