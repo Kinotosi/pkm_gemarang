@@ -24,7 +24,7 @@
                         </div>
                         <group>
                             <group>
-                                <field name="vendor_id" required="1" attrs="{'readonly': [('state','!=','draft')]}" />
+                                <field name="vendor_id" required="1" attrs="{'readonly': [('state','!=','draft')]}" domain="[('is_rawat_inap','=',False)]" />
                                 <field name="source_location_id" required="1" attrs="{'readonly': [('state','!=','draft')]}" domain="[('is_virtual','=',False)]" />
                                 <field name="dest_location_id" required="1" readonly="1" force_save="1" />
                                 <field name="company_id" readonly="1" force_save="1" />
@@ -34,6 +34,8 @@
                                 <field name="create_uid" readonly="1" force_save="1" />
                                 <field name="scheduled_date" attrs="{'readonly': [('state','!=','draft')]}" />
                                 <field name="date_done" readonly="1" force_save="1"/>
+                                <field name="source_document"/>
+                                <field name="patient_id" invisible="1"/>
                             </group>
                         </group>
                         <notebook>

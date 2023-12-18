@@ -19,6 +19,8 @@ class StockOutput(models.Model):
     date_done = fields.Datetime(string='Date of Transfer', required=False)
     scheduled_date = fields.Datetime(string='Scheduled Date', required=False)
     stock_output_move_ids = fields.One2many(comodel_name='stock.output.move', inverse_name='stock_output_id', string='Stock Move', required=False)
+    source_document = fields.Char(string='Source Document', required=False)
+    patient_id = fields.Many2one(comodel_name='patient.rawat.inap', string='Patient', required=False)
     cancel_reason = fields.Text(string="Cancel Reason", required=False)
     note = fields.Text(string="Note", required=False)
 
@@ -83,6 +85,20 @@ class StockOutput(models.Model):
                             break
                 else:
                     produc_id.quantity_done = 0.0
+            if rec.patient_id:
+                for move_id in rec.stock_output_move_ids:
+                    order_id = self.env['patient.order.line'].search([('product_id','=',move_id.product_id.id),('patient_id','=',rec.patient_id.id)], limit=1)
+                    if order_id:
+                        order_id.write({'quantity': order_id.quantity + move_id.quantity_done})
+                    else:
+                        self.env['patient.order.line'].create({
+                            'line_sequence': len(rec.patient_id.order_line) + 1,
+                            'product_id': move_id.product_id.id,
+                            'patient_id': rec.patient_id.id,
+                            'name': move_id.name,
+                            'quantity': move_id.quantity_done,
+                        })
+
             rec.state = 'done'
 
     def action_cancel(self):

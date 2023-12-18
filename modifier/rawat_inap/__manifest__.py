@@ -10,7 +10,7 @@
     'summary': 'Odoo 14 Purchase',
     'sequence': 10,
     'website': '',
-    'depends': ['base', 'account', 'l10n_id_efaktur', 'stock'],
+    'depends': ['base', 'account', 'l10n_id_efaktur', 'stock', 'product'],
     'license': 'LGPL-3',
     'demo': [],
     'data': [
@@ -18,6 +18,7 @@
 
         'data/ir_sequence.xml',
         'data/stock_warehouse_data.xml',
+        'data/res_partner_data.xml',
 
         'views/res_partner_views.xml',
         'views/product_views.xml',
@@ -26,10 +27,12 @@
         'views/stock_move_line.xml',
         'views/isurances_views.xml',
         'views/rooms_views.xml',
+        'views/patients_views.xml',
         'views/menuitem_view.xml',
 
         'wizard/stock_notification_views.xml',
         'wizard/stock_cancel_views.xml',
+        'wizard/product_order_line_views.xml',
     ],
     'qweb': [],
     'installable': True,

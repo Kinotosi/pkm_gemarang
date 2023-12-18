@@ -5,3 +5,5 @@ from . import stock_warehouse
 from . import stock_move_line
 from . import insurances
 from . import rooms
+from . import patient_rawat_inap
+from . import product_model

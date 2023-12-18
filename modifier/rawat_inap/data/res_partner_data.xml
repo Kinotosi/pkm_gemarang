@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="patient_res_partner_id" model="res.partner">
+            <field name="name">Patient</field>
+            <field name="is_vendor" eval="True"/>
+        </record>
+    </data>
+</odoo>

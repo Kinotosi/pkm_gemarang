@@ -17,7 +17,8 @@
 
                 <xpath expr="//field[@name='vat']" position="before">
                     <field name="is_rawat_inap" invisible="1"/>
-                    <field name="employee_type" attrs="{'invisible': [('is_rawat_inap','=',False)]}"/>
+                    <field name="is_vendor" invisible="1"/>
+                    <field name="employee_type" attrs="{'invisible': ['|',('is_rawat_inap','=',False),('is_vendor','=',True)]}"/>
                     <field name="l10n_id_pkp" attrs="{'invisible': [('country_id', '!=', False), ('country_code', '!=', 'ID')]}"/>
                     <field name="l10n_id_nik" attrs="{'readonly': [('parent_id','!=',False)], 'invisible': [('l10n_id_pkp','=',False)], 'required': [('l10n_id_pkp','=',True)]}"/>
                 </xpath>
@@ -25,7 +26,7 @@
             </field>
         </record>
 
-         Inherit Form View to Modify it
+<!--         Inherit Form View to Modify it-->
         <record id="res_partner_inherit_l10n_id_efaktur_form_views" model="ir.ui.view">
             <field name="name">res.partner.inherit.l10n.id.efaktur.form.views</field>
             <field name="model">res.partner</field>
@@ -55,6 +56,21 @@
             </field>
         </record>
 
+        <record id="res_partner_action_vendor_rawat_inap" model="ir.actions.act_window">
+            <field name="name">Vendor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'search_default_supplier': 1,'res_partner_search_mode': 'supplier', 'default_is_company': True, 'default_supplier_rank': 1, 'default_is_vendor': True, 'default_company_type': 'person'}</field>
+            <field name="domain">[('is_vendor','=',True)]</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new Vendor in your address book
+              </p><p>
+                Odoo helps you easily track all activities related to a supplier.
+              </p>
+            </field>
+        </record>
 
 
     </data>

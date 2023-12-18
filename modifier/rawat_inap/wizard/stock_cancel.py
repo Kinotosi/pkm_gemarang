@@ -5,7 +5,7 @@ class StockCancel(models.TransientModel):
     _name = 'stock.cancel'
 
     stock_input_id = fields.Many2one(comodel_name='stock.input', string='Stock Input', required=False)
-    stock_output_id = fields.Many2one(comodel_name='stock.input', string='Stock Output', required=False)
+    stock_output_id = fields.Many2one(comodel_name='stock.output', string='Stock Output', required=False)
     reason_message = fields.Text(string="Reason", required=False)
 
     def action_confirm_cancel(self):
